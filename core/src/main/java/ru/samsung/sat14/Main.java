@@ -9,18 +9,23 @@ public class Main extends ApplicationAdapter {
     SpriteBatch batch;
     Texture image;
 
-    float x = 100;
-    float y = 300;
-    float vx = 10;
+    float x0 = 100;
+    float y0 = 300;
+    float vx0 = 5;
 
     float x1 = 700;
     float y1 = 250;
-    float vy1 = 10;
+    float vy1 = 5;
 
     float x2 = 0;
     float y2 = 0;
-    float vx2 = 10;
-    float vy2 = 10;
+    float vx2 = 5;
+    float vy2 = 5;
+
+    float x3 = 0;
+    float y3 = 0;
+    float vx3 = 0;
+    float vy3 = 5;
 
     @Override
     public void create() {
@@ -30,9 +35,9 @@ public class Main extends ApplicationAdapter {
 
     @Override
     public void render() {
-        x += vx;
-        if(x > 1600-230 || x < -70) {
-            vx = -vx;
+        x0 += vx0;
+        if(x0 > 1600-230 || x0 < -70) {
+            vx0 = -vx0;
         }
 
         y1 += vy1;
@@ -49,11 +54,31 @@ public class Main extends ApplicationAdapter {
             vy2 = -vy2;
         }
 
+        x3 += vx3;
+        y3 += vy3;
+        if(y3 > 900-200){
+            vy3 = 0;
+            vx3 = 5;
+        }
+        if(x3 > 1600-200){
+            vx3 = 0;
+            vy3 = -5;
+        }
+        if(y3<0){
+            vy3 = 0;
+            vx3 = -5;
+        }
+        if(x3<0){
+            vy3 = 5;
+            vx3 = 0;
+        }
+
         ScreenUtils.clear(0.2f, 0.1f, 0.3f, 1f);
         batch.begin();
-        batch.draw(image, x, y, 300, 300);
+        batch.draw(image, x0, y0, 300, 300);
         batch.draw(image, x1, y1, 300, 300);
         batch.draw(image, x2, y2, 300, 300);
+        batch.draw(image, x3, y3, 200, 200);
         batch.end();
     }
 
