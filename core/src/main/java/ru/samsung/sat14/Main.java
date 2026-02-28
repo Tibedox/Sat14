@@ -25,7 +25,7 @@ public class Main extends ApplicationAdapter {
     float x3 = 0;
     float y3 = 0;
     float vx3 = 0;
-    float vy3 = 5;
+    float vy3 = 15;
 
     @Override
     public void create() {
@@ -58,19 +58,23 @@ public class Main extends ApplicationAdapter {
         y3 += vy3;
         if(y3 > 900-200){
             vy3 = 0;
-            vx3 = 5;
+            vx3 = 15;
+            y3 = 900-200;
         }
         if(x3 > 1600-200){
             vx3 = 0;
-            vy3 = -5;
+            vy3 = -15;
+            x3 = 1600-200;
         }
         if(y3<0){
             vy3 = 0;
-            vx3 = -5;
+            vx3 = -15;
+            y3 = 0;
         }
         if(x3<0){
-            vy3 = 5;
+            vy3 = 15;
             vx3 = 0;
+            x3 = 0;
         }
 
         ScreenUtils.clear(0.2f, 0.1f, 0.3f, 1f);
